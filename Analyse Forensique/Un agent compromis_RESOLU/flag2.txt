@@ -1,0 +1,1 @@
+404CTF{exfiltration.py,flag.txt,hallebarde.png,super-secret.pdf}
