@@ -37,15 +37,13 @@ def extractData(size):
         data.write(b"".join(data_blocks))
 
 
-def testDisk(original, recover):
+def testDisk():
     pwn.info("Test de la reconstruction du disque manquant")
-    if len(original) == len(recover):
+    if len("./disk0.img") == len("./disk2.img"):
         pwn.success("la reconstruction du disque a réussie")
     else:
         pwn.warn("ERREUR: la reconstruction à échoué, la taille des disques diffèrent")
-
-
-#        raise SystemExit()
+        raise SystemExit()
 
 
 def main():
@@ -56,10 +54,10 @@ def main():
     data = xorBytes(d0.read(), d1.read())
     write = writeFile(data)
     d2 = open("disk2.img", "rb")
-    testDisk(d0.read(), d2.read())
     d0.close()
     d1.close()
     d2.close()
+    testDisk()
     extractData(k)
 
 
