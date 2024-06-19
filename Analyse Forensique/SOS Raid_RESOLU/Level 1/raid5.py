@@ -25,7 +25,7 @@ def extractData(d1, d2, d3, size):
     pwn.info("la taille est de: {} octet".format(size))
     x = 2
     n = 27756
-    data = open("data", "wb")
+    data = open("data.zip", "wb")
     pwn.info("recréation du système de fichier")
     for _ in range(int(n)):
         blocks = (d1.read(size), d2.read(size), d3.read(size))
@@ -40,6 +40,7 @@ def testDisk(original, recover):
         pwn.success("la reconstruction du disque a réussie")
     else:
         pwn.warn("ERREUR: la reconstruction à échoué, la taille des disques diffèrent")
+        raise SystemExit()
 
 
 def main():
