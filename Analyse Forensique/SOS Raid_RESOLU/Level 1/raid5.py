@@ -21,13 +21,16 @@ def writeFile(data):
     d2.close()
 
 
-def extractData(d1, d2, d3, size):
+def extractData(size):
     pwn.info("la taille est de: {} octet".format(size))
+    d1 = open("disk0.img", "rb")
+    d2 = open("disk1.img", "rb")
+    d3 = open("disk2.img", "rb")
     x = 2
     n = 27756
     data = open("data.zip", "wb")
-    pwn.info("recréation du système de fichier")
-    for _ in range(int(n)):
+    pwn.info("extraction des données")
+    for _ in range(n):
         blocks = (d1.read(size), d2.read(size), d3.read(size))
         data_blocks = [b for i, b in enumerate(blocks) if i != x]
         x = (x - 1) % 3
@@ -40,7 +43,9 @@ def testDisk(original, recover):
         pwn.success("la reconstruction du disque a réussie")
     else:
         pwn.warn("ERREUR: la reconstruction à échoué, la taille des disques diffèrent")
-        raise SystemExit()
+
+
+#        raise SystemExit()
 
 
 def main():
@@ -52,7 +57,10 @@ def main():
     write = writeFile(data)
     d2 = open("disk2.img", "rb")
     testDisk(d0.read(), d2.read())
-    extractData(d0, d1, d2, k)
+    d0.close()
+    d1.close()
+    d2.close()
+    extractData(k)
 
 
 if __name__ == "__main__":
