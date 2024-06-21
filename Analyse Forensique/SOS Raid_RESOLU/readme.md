@@ -166,5 +166,25 @@ def main():
 if __name__ == "__main__":
     main()
 ```
+Ce qui nous donne le joli output suivant
 
+```bash
+[*] Reconstruction du RAID5
+[*] Recréation des données de l’array
+[*] reconstruction du disque
+[*] Test de la reconstruction du disque manquant
+[+] la reconstruction du disque a réussie
+[*] la taille est de: 1 octet
+[*] extraction des données
+```
+
+J'ai aussi ajouter un contrôle de la taille du disque recréé (oui, car les 3 disques vont avoir la même taille), donc si la création à échoué, alors le programe se stop .
+
+```bash
+[*] Reconstruction du RAID5
+[*] Recréation des données de l’array
+[*] reconstruction du disque
+[*] Test de la reconstruction du disque manquant
+[!] ERREUR: la reconstruction à échoué, la taille des disques diffèrent
+```
 ## SOS RAID 2
