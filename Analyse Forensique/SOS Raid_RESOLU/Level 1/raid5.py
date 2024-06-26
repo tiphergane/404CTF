@@ -5,7 +5,6 @@ import pwn
 
 def xorBytes(b0, b1):
     pwn.info("Recréation des données de l’array")
-    data = ""
     b3 = bytearray(len(b0))
     for i in range(len(b0)):
         b0 = bytearray(b0)
@@ -35,6 +34,9 @@ def extractData(size):
         data_blocks = [b for i, b in enumerate(blocks) if i != x]
         x = (x - 1) % 3
         data.write(b"".join(data_blocks))
+    d1.close()
+    d2.close()
+    d3.close()
 
 
 def testDisk():
