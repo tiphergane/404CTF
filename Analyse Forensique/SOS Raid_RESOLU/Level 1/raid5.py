@@ -54,11 +54,7 @@ def main():
     d0 = open("disk0.img", "rb")
     d1 = open("disk1.img", "rb")
     data = xorBytes(d0.read(), d1.read())
-    write = writeFile(data)
-    d2 = open("disk2.img", "rb")
-    d0.close()
-    d1.close()
-    d2.close()
+    writeFile(data)
     testDisk()
     extractData(k)
 
