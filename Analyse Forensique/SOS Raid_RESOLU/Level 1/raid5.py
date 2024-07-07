@@ -4,7 +4,7 @@ import pwn
 
 
 def xorBytes(b0, b1):
-    pwn.info("Recréation des données de l’array")
+    pwn.info("Calcul des sommes de contrôle")
     b3 = bytearray(len(b0))
     for i in range(len(b0)):
         b0 = bytearray(b0)
@@ -50,7 +50,7 @@ def testDisk():
 
 def main():
     k = 1
-    pwn.info("Reconstruction du RAID5")
+    pwn.warn("Reconstruction du RAID5")
     d0 = open("disk0.img", "rb")
     d1 = open("disk1.img", "rb")
     data = xorBytes(d0.read(), d1.read())
