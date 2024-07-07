@@ -6,9 +6,9 @@ import pwn
 def xorBytes(b0, b1):
     pwn.info("Calcul des sommes de contrôle")
     b3 = bytearray(len(b0))
+    b0 = bytearray(b0)
+    b1 = bytearray(b1)
     for i in range(len(b0)):
-        b0 = bytearray(b0)
-        b1 = bytearray(b1)
         b3[i] = b0[i] ^ b1[i]
     return b3
 
